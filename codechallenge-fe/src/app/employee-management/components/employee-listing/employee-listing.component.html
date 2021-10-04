@@ -4,7 +4,7 @@
     (onTabActivated)="onTabActivated($event)"
     (onTabsDeactivated)="onTabsDeactivated()">    
 </app-page-header>
-<app-page-content [hasPadding]="false">
+<app-page-content [hasPadding]="false">	
 	<app-employee-details [newUser]="true" (newUserAdded)="onNewUserAdded()"></app-employee-details>
 	<div class="main-content">
 		<app-advanced-search (onSearchByKeywordClick)="onSearchByKeywordClick($event)"

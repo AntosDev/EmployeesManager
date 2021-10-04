@@ -36,6 +36,17 @@ export class EmployeesService {
     );
   }
 
+  public addEmpoloyee(employee: Employee): Observable<any> {
+    
+    let url: string = `${this.appConfigService.appConfig.ServerUrl}/users/search`;
+
+    return this.http.post<any>(url,employee).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
+
   public getDepartments(): Observable<Department[]> {
     let url: string = `${this.appConfigService.appConfig.ServerUrl}/users/search`;
     return this.http.get<Department[]>(url).pipe(

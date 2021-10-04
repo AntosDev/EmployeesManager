@@ -1,6 +1,6 @@
 class EmployeeBE {
 
-    public constructor(init?: Partial<DepartmentBE>) {
+    public constructor(init?: Partial<EmployeeBE>) {
         Object.assign(this, init);
     }
 

@@ -5,8 +5,9 @@ let express = require('express'),
 
 
 // Setting up port with express js
-const employeeRoute = require('./employees')
-const departmentsRoute = require('./departments_routes')
+const employeeRoutes = require('./employees')
+const departmentsRoutes = require('./departments_routes')
+const employmenttypesRoutes = require('./employmenttypes_routes')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -15,8 +16,9 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 //app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
 //app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-app.use('/api/employees', employeeRoute)
-app.use('/api/departments', departmentsRoute)
+app.use('/api/employees', employeeRoutes);
+app.use('/api/departments', departmentsRoutes);
+app.use('/api/emplymenttypes', employmenttypesRoutes);
 
 // Create port
 const port = process.env.PORT || 8080;

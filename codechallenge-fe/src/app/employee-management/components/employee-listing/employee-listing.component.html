@@ -1,0 +1,21 @@
+<app-page-header 
+    [headerLinks]="headerLinks" 
+    [tabs]="tabs" 
+    (onTabActivated)="onTabActivated($event)"
+    (onTabsDeactivated)="onTabsDeactivated()">    
+</app-page-header>
+<app-page-content [hasPadding]="false">
+	<app-employee-details [newUser]="true" (newUserAdded)="onNewUserAdded()"></app-employee-details>
+	<div class="main-content">
+		<app-advanced-search (onSearchByKeywordClick)="onSearchByKeywordClick($event)"
+							 (onAdvancedSearchClick)="onAdvancedSearchClick()"
+							 (onAdvancedSearchResetClick)="onAdvancedSearchResetClick()">
+			<app-employee-advanced-search></app-employee-advanced-search>
+		</app-advanced-search>
+		<app-employee-card-listing [searchType]="searchType"
+						   [searchTags]="searchKeywords"
+						   [advancedSearchCriteria]="advancedSearchCriteria"
+						   (onSearchTagsUpdate)="updateSearchTags($event)">
+		</app-employee-card-listing>
+	</div>
+</app-page-content>

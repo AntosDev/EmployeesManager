@@ -1,0 +1,27 @@
+<span *ngIf="label && label != ''" class="label" [ngClass]="{required: required,'required-warning': !isValid() && touched}"> {{label}} </span>
+<div class="app-multi-select" [ngClass]="{'active': isOpen, 'disabled': disabled, 'is-invalid': hasError, 'required-warning': !isValid() && touched }">
+	<div class="select-container">
+		<div class="values-container" (click)="toggleSelectPanelVisibility()">
+			<span *ngIf="loading" class="placeholder">loading ...</span>
+			<span *ngIf="selectedValues.length==0 && !loading" class="placeholder">{{placeholder}}</span>
+			<span *ngIf="!loading" [title]="selectedOptionsLabel" class="selected-options-label">{{selectedOptionsLabel}}</span>
+		</div>
+
+		<div *ngIf="!disabled" class="select-toggler" (click)="toggleSelectPanelVisibility()">
+			<div class="separator"></div>
+			<div class="arrow" [ngClass]="{'down': isOpen, 'up': !isOpen}"></div>
+		</div>
+		<div *ngIf="selectedValues.length > 0 && !disabled && clearValueAllowed" class="clear-all" (click)="clearSelection()">
+			<svg preserveAspectRatio="xMidYMid" width="16" height="16" viewBox="0 0 16 16">
+				<path d=" M15.997,1.457 L9.434,8.020 L15.778,14.364 L14.364,15.778 L8.020,9.434 L1.457,15.997 L0.003,14.543 L6.566,7.980 L0.222,1.636 L1.636,0.222 L7.980,6.566 L14.543,0.003 L15.997,1.457 Z" />
+			</svg>
+		</div>
+	</div>
+	<ul *ngIf="isOpen && !disabled && options.length > 0" class="select-panel">
+		<li *ngIf="isMultiSelectionEnabled" class="select-option" [ngClass]="{'selected': isAllOptionSelected()}" (click)="onAllOptionClick()">{{allOptionText}}</li>
+		<li *ngFor="let option of options" class="select-option" [ngClass]="{'selected': isOptionSelected(option)}" [title]="getOptionLabel(option)" (click)="onOptionClick(option)">{{getOptionLabel(option)}}</li>
+	</ul>
+
+</div>
+
+

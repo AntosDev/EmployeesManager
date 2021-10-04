@@ -1,0 +1,49 @@
+<div class="advanced-search" (clickOutside)="isAdvancedSearchBoxVisible=false" [excludedClasses]="['select-option','clear-all']">
+	<!-- basic search box -->
+	<div class="input-group">
+		<div class="input-group-btn">
+			<!-- button to show the avanced search box -->
+			<a href="javascript:void(0)" class="advanced-search-button" (click)="isAdvancedSearchBoxVisible = !isAdvancedSearchBoxVisible" [ngClass]="{'advanced-search-button-activated': isAdvancedSearchBoxVisible}">
+				Advanced Search
+				<div class="arrow"><img src="assets/images/arrow-down.svg" /></div>
+			</a>
+		</div>
+
+		<!--basic search input-->
+		<input type="search" name="keywordSearch" class="basic-search-input" [placeholder]="placeholder" [(ngModel)]="searchByKeywordInput" (keydown.enter)="searchByKeywordClick()" [disabled]="isAdvancedSearchBoxVisible" />
+
+		<!-- basic search button  -->
+		<span class="input-group-btn">
+			<button (click)="searchByKeywordClick()" class="basic-search-button" [disabled]="isAdvancedSearchBoxVisible">Search</button>
+		</span>
+	</div>
+
+	<!-- advanced search box-->
+	<div class="advanced-search-box" [ngClass]="{'hidden': !isAdvancedSearchBoxVisible}">
+		<div class="search-box-arrow"></div>
+
+		<div class="search-box-header">
+			<div class="filter-lable">Filter by:</div>
+			<a href="javascript:void(0)" class="reset-search" (click)="onResetAdvnacedSearchClick()">
+				<img src="assets/images/reset.svg" />Reset
+			</a>
+		</div>
+
+        <ng-content></ng-content>
+
+		<!-- advanced search button -->
+		<button (click)="advancedSearchClick()" class="search-button">
+			Search
+		</button>
+	</div>
+
+	<!-- search tags -->
+	<div class="search-keywords-tags">
+		<ul>
+			<li *ngFor="let tag of searchTags;let tagIndex = index" [ngClass]="{'tag-with-no-results': !tag.HasResult}">
+				{{tag.Value}}
+				<img (click)="removeSearchTag(tagIndex)" class="keyword-remove" src="assets/images/close.svg" />
+			</li>
+		</ul>
+	</div>
+</div>

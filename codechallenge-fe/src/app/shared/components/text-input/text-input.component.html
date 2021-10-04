@@ -1,0 +1,3 @@
+<span *ngIf="label && label != ''" class="label" [ngClass]="{required: required,'required-warning': showValidation }"> {{label}} </span>
+<input type="text" [placeholder]="placeholder" (blur)="onBlur()" [disabled]="disabled" [(ngModel)]="text" (ngModelChange)="onChange()" [ngClass]="{'required-warning': showValidation }"/>
+<span *ngIf="validationMessage != '' && showValidation" class="validation-message">{{validationMessage}}</span>

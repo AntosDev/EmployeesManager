@@ -1,0 +1,36 @@
+<div class="top">
+    <div class="avatar">
+        <img [src]="getAvatarSource()">
+    </div>
+    <div class="user-info">
+        <app-text-input label="First Name" [maxLength]="50" [required]="true" [disabled]="isDataEntryDisabled()"
+            [(text)]="employee.firstName"></app-text-input>
+        <app-text-input label="Last Name" [required]="true" [maxLength]="50" [disabled]="isDataEntryDisabled()"
+            [(text)]="employee.lastName"></app-text-input>
+
+        <app-text-input label="Company Email" [lookupValidation]="emailValidation()" [isEmail]="true" [required]="true"
+            [disabled]="isDataEntryDisabled()" [(text)]="employee.companyEmail"></app-text-input>
+        <app-text-input label="Personal Email" [lookupValidation]="emailValidation()" [isEmail]="true" [required]="true"
+            [disabled]="isDataEntryDisabled()" [(text)]="employee.personalEmail"></app-text-input>
+        <app-text-input label="Phone Number" [required]="true" [disabled]="isDataEntryDisabled()"
+            [(text)]="employee.phoneNumber"></app-text-input>
+
+        <app-multi-select [options]="employmentTypes" [label]="Employment Type" [required]="true" textField="name"
+            valueField="id" [placeholder]="Select Employment Type"" 
+            [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" [disabled]="disabled">
+        </app-multi-select>
+
+        <app-multi-select [options]="departments" [label]="Department" [required]="true" textField="name"
+            valueField="id" [placeholder]="Select Department" 
+            [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" [disabled]="disabled">
+        </app-multi-select>
+
+        <app-multi-select [options]="jobtitles" [label]="Job Title" [required]="true" textField="name" valueField="id"
+            [placeholder]="Select Job Title" 
+            [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" [disabled]="disabled">
+        </app-multi-select>
+    </div>
+</div>
+
+<app-button class="info-action-btn" *ngIf="newUser" label="Add" [disabled]="!isValid() || addUserDisabled"
+    (onClick)="addUser()"></app-button>

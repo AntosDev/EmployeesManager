@@ -1,0 +1,152 @@
+
+.label.required::after {
+  content: "*";
+  margin-left: 4px;
+  color: red;
+}
+
+.label.required-warning {
+  color: red;
+}
+
+.app-multi-select {
+  height: 32px;
+  line-height: 32px;
+  border: gray;
+  background-color: white;
+  border: 1px solid lightgray;
+  min-width: 260px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+}
+
+  .app-multi-select.active {
+    border-color: lightblue;
+  }
+
+  .app-multi-select.disabled {
+    background-color: rgba(211, 211, 211, .4);
+    cursor: default;
+  }
+
+    .app-multi-select.disabled .selected-options-label {
+      color: lightgray;
+    }
+
+  .app-multi-select:not(.disabled) .selected-options-label {
+    color: gray;
+  }
+
+  .app-multi-select.is-invalid, .app-multi-select.required-warning {
+    border: 1.5px solid red;
+  }
+
+  .app-multi-select .select-container {
+    color: gray;
+    font-size: 0.9rem;
+    position: relative;
+    height: 100%;
+  }
+
+    .app-multi-select .select-container .values-container {
+      display: inline-block;
+      overflow: hidden;
+      max-height: 32px;
+      line-height: 22px;
+      box-sizing: border-box;
+      padding: 4px;
+      position: absolute;
+      top: 0;
+      right: 54px;
+      left: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 100%;
+    }
+
+      .app-multi-select .select-container .values-container .placeholder {
+        color: gray;
+      }
+
+    .app-multi-select .select-container .clear-all {
+      cursor: pointer;
+      width: 16px;
+      float: right;
+      transform: translateY(2px);
+    }
+
+      .app-multi-select .select-container .clear-all svg {
+        width: 12px;
+        height: 12px;
+      }
+
+        .app-multi-select .select-container .clear-all svg path {
+          fill: lightgray;
+        }
+
+    .app-multi-select .select-container .select-toggler {
+      height: 32px;
+      float: right;
+      margin-left: 8px;
+      width: 22px;
+      cursor: pointer;
+      padding-right: 10px;
+    }
+
+      .app-multi-select .select-container .select-toggler .separator {
+        content: '';
+        height: 20px;
+        background: lightgray;
+        width: 1px;
+        display: inline-block;
+        margin-right: 8px;
+        transform: translateY(5px);
+      }
+
+      .app-multi-select .select-container .select-toggler .arrow {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid lightgray;
+        display: block;
+        margin-top: 10px;
+        display: inline-block;
+      }
+
+        .app-multi-select .select-container .select-toggler .arrow.down {
+          transform: rotate(180deg);
+          transition: all 0.25s ease-out;
+        }
+
+        .app-multi-select .select-container .select-toggler .arrow.up {
+          transition: all 0.25s ease-out;
+        }
+
+  .app-multi-select .select-panel {
+    border: 1px solid lightblue;
+    background-color: white;
+    color: gray;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    max-height: 200px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+    .app-multi-select .select-panel .select-option {
+      cursor: pointer;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+      .app-multi-select .select-panel .select-option:hover {
+        background-color: lightblue;
+      }
+
+      .app-multi-select .select-panel .select-option.selected {
+        color: darkblue;
+      }

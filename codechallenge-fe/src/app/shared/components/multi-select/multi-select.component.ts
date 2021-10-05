@@ -5,7 +5,7 @@ import { SelectionChangedArgs } from './models/selection-changed-args';
 @Component({
 	selector: 'app-multi-select',
 	templateUrl: './multi-select.component.html',
-	styleUrls: ['./multi-select.component.scss'],
+	styleUrls: ['./multi-select.component.css'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -101,14 +101,14 @@ export class MultiSelectComponent implements ControlValueAccessor, OnInit {
 	}
 
 	@HostListener('document:click', ['$event'])
-	clickout(event) {
+	clickout(event: any) {
 		if (!this.eRef.nativeElement.contains(event.target)) {
 			this.isOpen = false;
 			this.notifyComboClosed();
 		}
 	}
 
-	private getOptionLabel(option: any) {
+  public getOptionLabel(option: any) {
 		if (option && this.textField in option) {
 			return option[this.textField];
 		}
@@ -133,23 +133,23 @@ export class MultiSelectComponent implements ControlValueAccessor, OnInit {
 		this.notifyComboClosed();
 	}
 
-	private notifySelectionChanged() {
+  public notifySelectionChanged() {
 		this.touched = true;
 		this.selectionChanged.emit(new SelectionChangedArgs(this.selectedValues));
 	}
 
-	private notifyComboClosed() {
+  public notifyComboClosed() {
 		if (this.isMultiSelectionEnabled && this.isOpenTemp) {
 			this.onCloseCallback.emit(new SelectionChangedArgs(this.selectedValues));
 			this.isOpenTemp = false;
 		}
 	}
 
-	private isOptionSelected(option) {
+  public isOptionSelected(option: any) {
 		return this.getSelectedOptionIndex(option) > -1;
 	}
 
-	private onOptionClick(option) {
+  public onOptionClick(option: any) {
 		let index = this.getSelectedOptionIndex(option);
 		let valueChanged = false;
 		if (index > -1) {
@@ -172,27 +172,27 @@ export class MultiSelectComponent implements ControlValueAccessor, OnInit {
 		}
 	}
 
-	private close(): void {
+  public close(): void {
 		this.isOpen = false;
 		this.notifyComboClosed();
 	}
 
-	private getSelectedOptionIndex(option): number {
+  public getSelectedOptionIndex(option: any): number {
 		let index: number = this.selectedValues.findIndex(i => i[this.valueField] == option[this.valueField]);
 		return index;
-	}
+  }
 
-	private isAllOptionSelected(): boolean {
-		return this.selectedValues.length == this.options.length;
-	}
+  public isAllOptionSelected(): boolean {
+    return this.selectedValues.length == this.options.length;
+  }
 
-	private onAllOptionClick(): void {
-		if (this.isAllOptionSelected()) {
-			this.clearSelection();
-		} else {
-			this.selectedValues = new Array<any>();
-			this.selectedValues = Array.from(this.options);
-			this.notifySelectionChanged();
-		}
-	}
+  public onAllOptionClick(): void {
+    if (this.isAllOptionSelected()) {
+      this.clearSelection();
+    } else {
+      this.selectedValues = new Array<any>();
+      this.selectedValues = Array.from(this.options);
+      this.notifySelectionChanged();
+    }
+  }
 }

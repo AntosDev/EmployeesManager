@@ -1,0 +1,40 @@
+.label.required::after {
+  content: "*";
+  margin-left: 4px;
+  color: red;
+}
+
+.label.required-warning {
+  color: red;
+}
+
+input {
+  display: block;
+  height: 32px;
+  width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  color: gray;
+  padding-left: 5px;
+  padding-right: 37px;
+}
+
+  input:disabled {
+    background-color: lightgray;
+  }
+
+  input:focus {
+    border-color: lightblue;
+    outline: none;
+  }
+
+
+  input.required-warning {
+    border-color: red;
+  }
+
+.validation-message {
+  color: red;
+  font-size: 14px;
+}

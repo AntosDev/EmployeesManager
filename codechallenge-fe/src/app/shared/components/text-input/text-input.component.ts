@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { LookupValidation } from 'src/app/models/lookup-validation';
+import { LookupValidation } from '../../models/lookup-validation';
 
 @Component({
 	selector: 'app-text-input',
 	templateUrl: './text-input.component.html',
-	styleUrls: ['./text-input.component.scss']
+	styleUrls: ['./text-input.component.css']
 })
 export class TextInputComponent implements OnInit {
 	@Input() disabled: boolean = false;
@@ -15,7 +15,7 @@ export class TextInputComponent implements OnInit {
 	@Input() maxLength: number;
 	@Input() required: boolean = false;
 	@Input() isEmail: boolean = false;
-	@Input() lookupValidation: (string) => Observable<LookupValidation>;
+	@Input() lookupValidation: (string: string) => Observable<LookupValidation>;
 	@Output() textChange = new EventEmitter<string>();
 
 	public isLookupValid: boolean = true;
@@ -34,14 +34,14 @@ export class TextInputComponent implements OnInit {
 		let isLookupValid = !this.lookupValidation || (!this.lookupValidationPending && this.isLookupValid);
 		let isEmailValid = !this.isEmail || (this.isEmail && this.text != null && this.text != '' && this.validateEmail(this.text));
 		let isRequiredValid = !this.required || (this.required && this.text != null && this.text != "");
-		let isMaxLengthValid = !this.maxLength || !this.text || (this.text && this.maxLength && this.text.length <= this.maxLength);
+		let isMaxLengthValid = !this.maxLength || !this.text ||  this.text.length <= this.maxLength;
 		return isLookupValid && isEmailValid && isRequiredValid && isMaxLengthValid;
 	}
 
 	onChange() {
 		this.showValidation = false;
 		this.touched = true;
-		if (this.lookupValidation) {
+		if (this.lookupValidation != null) {
 			this.lookupValidationPending = true;
 		}		
 		this.textChange.emit(this.text);
@@ -65,7 +65,7 @@ export class TextInputComponent implements OnInit {
 				this.lookupValidationSub = this.lookupValidation(this.text).subscribe(result => {
 					if (result.isValid) {
 						this.isLookupValid = true;
-						this.validationMessage = null;
+						this.validationMessage = "";
 						this.showValidation = false;
 					}
 					else {

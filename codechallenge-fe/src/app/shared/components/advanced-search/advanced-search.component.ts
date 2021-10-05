@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SearchTag } from '../search/search-tag-interface';
+import { SearchTag } from '../../models/search-tag-interface';
 
 @Component({
 	selector: 'app-advanced-search',
 	templateUrl: './advanced-search.component.html',
-	styleUrls: ['./advanced-search.component.scss']
+	styleUrls: ['./advanced-search.component.css']
 })
 export class AdvancedSearchComponent implements OnInit {
 	@Input() placeholder: string = "keyword...";

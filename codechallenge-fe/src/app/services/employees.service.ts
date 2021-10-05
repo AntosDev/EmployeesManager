@@ -7,17 +7,19 @@ import { EmployeeSearchResult } from '../models/employee-search-result';
 import { Department } from '../models/department';
 import { Jobtitle } from '../models/jobtitle';
 import { Employmenttype } from '../models/employmenttype';
+import { AppConfigService } from '../shared/services/app-config.service';
+import { ApiRoutes } from '../shared/enums/api-routes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private appConfigService : AppConfigService) { }
 
   public searchEmployees(options: any)
     : Observable<{ keyword: string, searchResults: Employee[], totalCount: number }> {
-    let url: string = `${this.appConfigService.appConfig.ServerUrl}/users/search`;
+    let url: string = `${this.appConfigService.appConfig.ServerUrl}${ApiRoutes.GetAllEmployees}}`;
     let payLoad = {
       Options: {
         SortDirection: options.order ? options.order.dir : null,
@@ -48,7 +50,7 @@ export class EmployeesService {
   }
 
   public getDepartments(): Observable<Department[]> {
-    let url: string = `${this.appConfigService.appConfig.ServerUrl}/users/search`;
+    let url: string = `${this.appConfigService.appConfig.ServerUrl}${ApiRoutes.GetAllDepartments}`;
     return this.http.get<Department[]>(url).pipe(
       map(response => {
         return response;
@@ -66,7 +68,7 @@ export class EmployeesService {
   }
 
   public getEmploymentTypes(): Observable<Employmenttype[]> {
-    let url: string = `${this.appConfigService.appConfig.ServerUrl}/users/search`;
+    let url: string = `${this.appConfigService.appConfig.ServerUrl}${ApiRoutes.GetAllEmploymentTypes}`;
     return this.http.get<Employmenttype[]>(url).pipe(
       map(response => {
         return response;

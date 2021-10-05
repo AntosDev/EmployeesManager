@@ -3,22 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdvancedSearchComponent } from './shared/components/advanced-search/advanced-search.component';
-import { TextInputComponent } from './shared/components/text-input/text-input.component';
-import { MultiSelectComponent } from './shared/components/multi-select/multi-select.component';
-import { TableComponent } from './shared/components/table/table.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AdvancedSearchComponent,
-    TextInputComponent,
-    MultiSelectComponent,
-    TableComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

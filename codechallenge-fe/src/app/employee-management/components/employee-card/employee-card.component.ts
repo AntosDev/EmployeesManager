@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
 import { GenderEnum } from 'src/app/shared/enums/gender-enum';
 
@@ -12,7 +13,7 @@ export class EmployeeCardComponent implements OnInit {
 
   public employeeFullName: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.employeeFullName = ` ${this.employee.firstName} ${this.employee.lastName}`;
@@ -28,5 +29,4 @@ export class EmployeeCardComponent implements OnInit {
         return "assets/images/default-avatar.svg"
     }
   }
-
 }

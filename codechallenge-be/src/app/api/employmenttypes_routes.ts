@@ -13,6 +13,6 @@ departmentsRouter.route('/getAll').get((req, res) => {
         console.log(results);
         res.json(results)
     });
-
 });
+
 export = departmentsRouter;

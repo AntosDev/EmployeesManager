@@ -11,7 +11,7 @@ export class AppConfigService {
 
 	loadConfig(): Promise<any>{
     return this.http
-      .get<AppConfig>('./assets/configuration/config.json')
+      .get<AppConfig>('../../../assets/configuration/config.json')
       .toPromise()
       .then(config => {
         this.appConfig = config;
@@ -20,5 +20,7 @@ export class AppConfigService {
 }
 
 export const configFactory = (configService: AppConfigService) => {
-  return (): Promise<any> => { return configService.loadConfig(); }
+  return (): Promise<any> => { 
+    return configService.loadConfig(); 
+  }
 };

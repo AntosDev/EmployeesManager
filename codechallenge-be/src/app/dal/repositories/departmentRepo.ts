@@ -16,7 +16,7 @@ class DepartmentRepo {
 		});
 	}
 
-	getByName(name: numstringber, callback: Function) {
+	getByName(name: string, callback: Function) {
 		this.uow.query("select * from department where name = ?", [name], (result: any) => {
 			return callback(result);
 		});

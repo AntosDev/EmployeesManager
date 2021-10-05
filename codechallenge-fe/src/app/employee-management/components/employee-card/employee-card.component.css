@@ -1,0 +1,54 @@
+
+ :host {
+	 display: block;
+	 height: 100%;
+	 width: 100%;
+	 background-color: white;
+	 border: 1px solid lightgray;
+	 text-align: center;
+	 box-sizing: border-box;
+	 padding: 15px;
+	 position: relative;
+	 margin-bottom: 15px;
+	 min-height: 289px;
+}
+ :host:hover {
+	 border-color: lightblue;
+}
+ .status {
+	 position: absolute;
+	 right: 10px;
+	 top: 10px;
+	 height: 25px;
+	 width: 25px;
+}
+ .avatar {
+	 height: 100px;
+	 width: 100px;
+}
+ .username {
+	 text-transform: uppercase;
+	 white-space: nowrap;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+}
+ .user-number {
+	 height: 20px;
+}
+ hr {
+	 border: 0px;
+	 border-top: 1px solid lightblue;
+	 width: 20%;
+	 margin-top: 20px;
+	 margin-bottom: 20px;
+}
+ .school {
+	 font-size: 14px;
+	 color: lightgray;
+	 margin-bottom: 20px;
+}
+ .grade-section {
+	 font-weight: 800;
+	 font-style: italic;
+}
+ 

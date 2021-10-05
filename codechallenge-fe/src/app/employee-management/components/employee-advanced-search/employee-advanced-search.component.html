@@ -1,1 +1,11 @@
-<p>employee-advanced-search works!</p>
+<app-multi-select [options]="employmentTypes" label="Employment Type" [required]="true" textField="name" 
+valueField="id" placeholder="Select employment type"  [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" (selectionChanged)="onEmploymentTypeChange($event)">
+</app-multi-select>
+
+<app-multi-select [options]="departments" label="Department" [required]="true" textField="name" valueField="id"
+placeholder="Select department"  [isMultiSelectionEnabled]="false" [clearValueAllowed]="false"  (selectionChanged)="onDepartmentChange($event)">
+</app-multi-select>
+
+<app-multi-select [options]="jobtitles" label="Job Title" [required]="true" textField="name" valueField="id"
+placeholder="Select job title" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" (selectionChanged)="onJobTitleChange($event)">
+</app-multi-select>

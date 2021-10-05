@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    margin-bottom: 15px;
+}
+.results-container {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    margin-left: -15px;
+    margin-right: -13px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.results-container .card-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+}
+@media (min-width: 768px) {
+    .results-container .card-container {
+        width: calc(33.33333% - 30px);
+   }
+}
+@media (min-width: 992px) {
+    .results-container .card-container {
+        width: calc(25% - 30px);
+   }
+}
+.results-container::before, .results-container::after {
+    display: table;
+    content: " ";
+}
+.load-more, .loading-more {
+    text-align: center;
+    margin-top: 15px;
+}
+.load-more:hover {
+    color: lightblue;
+    cursor: pointer;
+}
+
+.results-header {
+    display: block;
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 19px;
+    font-weight: 500;
+}
+.no-results-label {
+    color: red;
+}

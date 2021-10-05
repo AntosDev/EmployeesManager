@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SearchType } from 'src/app/shared/enums/search_type';
 import { SearchTag } from '../../../shared/models/search-tag-interface';
+import { EmployeeAdvancedSearchComponent } from '../employee-advanced-search/employee-advanced-search.component';
 
 @Component({
   selector: 'app-employee-listing',
@@ -8,10 +9,15 @@ import { SearchTag } from '../../../shared/models/search-tag-interface';
   styleUrls: ['./employee-listing.component.css']
 })
 export class EmployeeListingComponent implements OnInit {
-	public advancedSearchCriteria: any;
-  constructor() { }
+  @ViewChild(EmployeeAdvancedSearchComponent, { static: false }) advancedSearchComp: EmployeeAdvancedSearchComponent;
+
   public searchTags: SearchTag[];
   public searchType: SearchType;
+  public showNewUser: boolean = false;
+  public advancedSearchCriteria: any;
+
+  constructor() { }
+  
   ngOnInit(): void {
   }
 
@@ -19,11 +25,14 @@ export class EmployeeListingComponent implements OnInit {
 
   }
   onSearchByKeywordClick(search: any) {
+    this.searchType = SearchType.normal;
+    this.updateSearchTags(search);
 
   }
 
   onAdvancedSearchClick() {
-
+    this.advancedSearchCriteria = this.advancedSearchComp.getValues();
+		this.searchType = SearchType.advanced;
   }
 
   onAdvancedSearchResetClick() {
@@ -31,14 +40,11 @@ export class EmployeeListingComponent implements OnInit {
   }
 
   public updateSearchTags(updatedTags: SearchTag[]) {
-		if (this.searchTags) {
-			this.searchTags.forEach(tag => {
-        let foundTag = updatedTags.find(t => t.Value == tag.Value);
-        if(foundTag){
-        tag.HasResult = foundTag.HasResult;
-        }
-      });
-		}
-	}
+    this.searchTags = [];
+    this.searchTags = updatedTags;
+  }
+  toggleAddUser(){
+    this.showNewUser = !this.showNewUser;
+  }
 
 }

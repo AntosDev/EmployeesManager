@@ -16,21 +16,42 @@ class EmploymentTypeDAL {
             repository.getAll((result: any) => {
 
                 var departments: EmploymentTypeBE[] = [];
+                if (result) {
 
-                result.forEach((dbdepartment: any) => {
-                    console.log(dbdepartment.name);
+                    result.forEach((dbdepartment: any) => {
+                        console.log(dbdepartment.name);
 
-                    let department = new EmploymentTypeBE();
-                    department.name = dbdepartment.name;
-                    department.id = dbdepartment.id;
-                    department.description = dbdepartment.description;
+                        let department = new EmploymentTypeBE();
+                        department.name = dbdepartment.name;
+                        department.id = dbdepartment.employment_type_id;
+                        department.description = dbdepartment.description;
 
-                    departments.push(department)
-                });
+                        departments.push(department)
+                    });
+                }
 
                 callback(departments);
-            });
+        });
+        });
+    }
+
+    public GetById(id: number, callback: Function) {
+
+        this.uowFact.create((uow: any) => {
+            let repository = new EmploymentTypeRepo(uow);
+            repository.getByID(id, (types: any) => {
+                let type = types[0];
+
+                console.log(type.name);
+
+                let department = new EmploymentTypeBE();
+                department.name = type.name;
+                department.id = type.employment_type_id;
+                department.description = type.description;
+
+                callback(department);
             uow.complete();
+        });
         });
     }
 
@@ -44,7 +65,7 @@ class EmploymentTypeDAL {
 
                 let department = new EmploymentTypeBE();
                 department.name = dbdepartment.name;
-                department.id = dbdepartment.id;
+                department.id = dbdepartment.employment_type_id;
                 department.description = dbdepartment.description;
 
                 callback(department);

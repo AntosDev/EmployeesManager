@@ -9,8 +9,11 @@ class EmployeeORM {
     public companyEmail: string;
     public personalEmail: string;
     public phoneNumber: string;
+    public gender: string;
     public departmentId: number;
     public employmentTypeId: number;
     public jobTitleId: number;
     public joiningDate: string;
 }
+
+export = EmployeeORM;

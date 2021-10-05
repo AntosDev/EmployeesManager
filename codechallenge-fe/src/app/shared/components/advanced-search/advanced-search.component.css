@@ -218,36 +218,3 @@
       float: left;
       width: 100%;
     }
-/*tags styles - start*/
-.search-keywords-tags {
-  margin-top: 15px;
-}
-
-  .search-keywords-tags ul {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .search-keywords-tags li {
-    display: inline-block;
-    background-color: lightblue;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    padding: 7px 10px;
-    border-radius: 7px;
-    font-size: 15px;
-    color: gray;
-  }
-
-    .search-keywords-tags li .keyword-remove {
-      position: relative;
-      top: -1px;
-      margin-left: 15px;
-      cursor: pointer;
-    }
-
-  .search-keywords-tags .tag-with-no-results {
-    background-color: red;
-  }
-/*tags styles - end*/

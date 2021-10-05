@@ -8,20 +8,20 @@ let express = require('express'),
 const employeeRoutes = require('./employees')
 const departmentsRoutes = require('./departments_routes')
 const employmenttypesRoutes = require('./employmenttypes_routes')
+const jobtitleRoutes = require('./jobtitle_routes')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cors());
-//app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-//app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
 app.use('/api/employees', employeeRoutes);
 app.use('/api/departments', departmentsRoutes);
 app.use('/api/emplymenttypes', employmenttypesRoutes);
+app.use('/api/jobtitles',jobtitleRoutes);
 
 // Create port
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8083;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })

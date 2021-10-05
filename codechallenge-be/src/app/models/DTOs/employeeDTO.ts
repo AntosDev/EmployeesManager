@@ -10,8 +10,12 @@ class EmployeeDTO {
     public companyEmail: string;
     public personalEmail: string;
     public phoneNumber: string;
-    public jobTitle: string;
-    public department: string;
-    public employmentType: string;
+    public gender: string;
+    public jobTitleId: number;
+    public jobTitleName: string;
+    public departmentId: number;
+    public departmentName: string;
+    public employmentTypeId: number;
+    public employmentTypeName: string;
 }
 export = EmployeeDTO;

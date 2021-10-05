@@ -1,3 +1,6 @@
+
+<div class="results-container">
 <div class="card-container" *ngFor="let employee of employees">
     <app-employee-card [employee]="employee" (onClick)="onEmployeeClickHandler($event)"></app-employee-card>
+</div>
 </div>

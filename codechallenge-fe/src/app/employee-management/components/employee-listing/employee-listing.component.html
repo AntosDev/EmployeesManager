@@ -1,6 +1,9 @@
 
+Welcome To Employee Manager;
 
-<app-employee-details [newUser]="true" (newUserAdded)="onNewUserAdded()"></app-employee-details>
+<app-button label="Toggle add user panel" (click)="toggleAddUser()"></app-button>
+
+<app-employee-details *ngIf="showNewUser" [newUser]="true" (newUserAdded)="onNewUserAdded()"></app-employee-details>
 <div class="main-content">
   <app-advanced-search (onSearchByKeywordClick)="onSearchByKeywordClick($event)"
                        (onAdvancedSearchClick)="onAdvancedSearchClick()"

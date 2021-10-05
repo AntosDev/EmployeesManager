@@ -10,7 +10,10 @@ export class Employee {
     public personalEmail: string;
     public phoneNumber: string;
     public gender: string;
-    public jobTitle: string;
-    public department: string;
-    public employmentType: string;
+    public jobTitleId: number;
+    public jobTitleName: string;
+    public departmentId: number;
+    public departmentName: string;
+    public employmentTypeId: number;
+    public employmentTypeName: string;
 }

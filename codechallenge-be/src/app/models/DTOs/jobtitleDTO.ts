@@ -1,6 +1,5 @@
-class EmploymentTypeORM {
-
-    public constructor(init?: Partial<EmploymentTypeORM>) {
+class JobTitleDTO{
+    public constructor(init?: Partial<JobTitleDTO>) {
         Object.assign(this, init);
     }
 
@@ -8,4 +7,4 @@ class EmploymentTypeORM {
     public name: string;
     public description: string;
 }
-export = EmploymentTypeORM;
+export = JobTitleDTO;

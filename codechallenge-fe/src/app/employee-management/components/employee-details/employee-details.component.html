@@ -23,18 +23,18 @@
     </app-multi-select>
 
 
-    <app-multi-select [options]="employmentTypes" label="Employment Type" [required]="true" textField="name"
-      valueField="id" [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false"
+    <app-multi-select [options]="employmentTypes" label="Employment Type" [required]="true" textField="name" 
+      valueField="id" [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" (selectionChanged)="onEmploymentTypeChange($event)"
       [disabled]="isDataEntryDisabled()">
     </app-multi-select>
 
     <app-multi-select [options]="departments" label="Department" [required]="true" textField="name" valueField="id"
-      [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false"
+      [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false"  (selectionChanged)="onDepartmentChange($event)"
       [disabled]="isDataEntryDisabled()">
     </app-multi-select>
 
     <app-multi-select [options]="jobtitles" label="Job Title" [required]="true" textField="name" valueField="id"
-      [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false"
+      [placeholder]="placeholder" [isMultiSelectionEnabled]="false" [clearValueAllowed]="false" (selectionChanged)="onJobTitleChange($event)"
       [disabled]="isDataEntryDisabled()">
     </app-multi-select>
   </div>

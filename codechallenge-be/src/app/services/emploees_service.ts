@@ -1,6 +1,5 @@
 import EmployeeBE from "../models/BEs/employeeBE";
-import EmployeesDAL from "../dal/employeesDAL"; import DepartmentsService from "./departments_service";
-import DepartmentBE from "../models/BEs/departmentBE";
+import EmployeesDAL from "../dal/employeesDAL";
 ;
 
 class EmployeesService {
@@ -10,21 +9,29 @@ class EmployeesService {
         this.employeesDal = new EmployeesDAL();
     }
     public GetAllEmployees(callBack: Function) {
-        let employees = this.employeesDal.GetAllEmployees((employees: EmployeeBE[]) => {
+        this.employeesDal.GetAllEmployees((employees: EmployeeBE[]) => {
+            console.log("returned employees");
+            callBack(employees);
+        });
+    }
+
+    public SearchByKeyword(keyword: string, callBack: Function) {
+        this.employeesDal.SearchByKeyword(keyword, (employees: EmployeeBE[]) => {
             console.log("returned employees");
             callBack(employees);
         });
     }
 
     public AddEmployee(employee: EmployeeBE, callBack: Function) {
-        let depService = new DepartmentsService();
-        depService.GetDepartment(employee.department, (department: DepartmentBE) => {
-            let employees = this.employeesDal.AddEmployee(employee, department.id, 0, 0, () => {
-                console.log("added employees");
-                callBack();
-            });
+        this.employeesDal.AddEmployee(employee, () => {
+            console.log("added employees");
+            callBack();
         });
     }
+    public DeleteEmployee(id:string, callback:Function){
+        this.employeesDal.Delete(id, callback);
+    }
+    
 
 }
 export = EmployeesService;

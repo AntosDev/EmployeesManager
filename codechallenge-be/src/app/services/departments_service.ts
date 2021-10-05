@@ -16,8 +16,15 @@ class DepartmentsService {
         });
     }
 
-    public GetDepartment(departmentName: string, callback: Function) {
-        this.departmentDal.GetByName(departmentName, (department: DepartmentBE) => {
+    public GetDepartment(id: number, callback: Function) {
+        this.departmentDal.GetById(id, (department: DepartmentBE) => {
+            console.log("returned departments");
+            callback(department);
+        });
+    }
+
+    public GetDepartmentByName(name: string, callback: Function) {
+        this.departmentDal.GetByName(name, (department: DepartmentBE) => {
             console.log("returned departments");
             callback(department);
         });

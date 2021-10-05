@@ -16,8 +16,8 @@ class EmploymentTypesService {
         });
     }
 
-    public GetEmploymentType(name: string, callback: Function) {
-        this.emplymentTypeDAL.GetByName(name, (types: EmplymentTypeBE) => {
+    public GetEmploymentType(id: number, callback: Function) {
+        this.emplymentTypeDAL.GetById(id, (types: EmplymentTypeBE) => {
             console.log("returned types");
             callback(types);
         });

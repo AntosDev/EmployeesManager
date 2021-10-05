@@ -9,8 +9,9 @@ class EmployeeBE {
     public companyEmail: string;
     public personalEmail: string;
     public phoneNumber: string;
-    public department: string;
-    public employmentType: string;
-    public jobTitle: string;
+    public gender: string;
+    public departmentId: number;
+    public employmentTypeId: number;
+    public jobTitleId: number;
 }
 export = EmployeeBE;

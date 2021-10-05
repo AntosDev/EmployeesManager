@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
+import { EmployeesService } from 'src/app/services/employees.service';
 import { GenderEnum } from 'src/app/shared/enums/gender-enum';
 
 @Component({
@@ -13,20 +14,26 @@ export class EmployeeCardComponent implements OnInit {
 
   public employeeFullName: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private empSVc: EmployeesService) { }
 
   ngOnInit(): void {
     this.employeeFullName = ` ${this.employee.firstName} ${this.employee.lastName}`;
   }
 
   getAvatarSource() {
-    switch (this.employee.gender.toLowerCase()) {
-      case GenderEnum.Male.toString().toLocaleLowerCase():
-        return "assets/images/male-avatar.svg"
-      case GenderEnum.Female.toString().toLocaleLowerCase():
-        return "assets/images/female-avatar.svg"
-      default:
-        return "assets/images/default-avatar.svg"
+    if (this.employee.gender) {
+      switch (this.employee.gender.toLowerCase()) {
+        case GenderEnum.Male.toString().toLocaleLowerCase():
+          return "assets/images/male-avatar.svg"
+        case GenderEnum.Female.toString().toLocaleLowerCase():
+          return "assets/images/female-avatar.svg"
+        default:
+          return "assets/images/default-avatar.svg"
+      }
+    }else{
+      return "assets/images/default-avatar.svg"
     }
+  }
+  deleteEmployee() {
   }
 }

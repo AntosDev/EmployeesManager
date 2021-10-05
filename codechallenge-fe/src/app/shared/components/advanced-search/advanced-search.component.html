@@ -35,15 +35,5 @@
 		<button (click)="advancedSearchClick()" class="search-button">
 			Search
 		</button>
-	</div>
-
-	<!-- search tags -->
-	<div class="search-keywords-tags">
-		<ul>
-			<li *ngFor="let tag of searchTags;let tagIndex = index" [ngClass]="{'tag-with-no-results': !tag.HasResult}">
-				{{tag.Value}}
-				<img (click)="removeSearchTag(tagIndex)" class="keyword-remove" src="assets/images/close.svg" />
-			</li>
-		</ul>
-	</div>
+	</div>	
 </div>
